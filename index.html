@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashAutomationPlus+ | Professional Tweet Automation Tool</title>
+    <meta name="description" content="Automate your X (Twitter) posting with FlashAutomationPlus+. Schedule tweets, manage multiple accounts, and streamline your social media workflow.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1DA1F2;
+            --secondary: #14171A;
+            --accent: #FF6B35;
+            --bg-light: #F7F9FA;
+            --text-dark: #14171A;
+            --text-muted: #657786;
+            --border: #E1E8ED;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #0c8dd8);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #0c8dd8);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            text-align: center;
+        }
+
+        section p {
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .about-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .about-content li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Disclaimer Box */
+        .disclaimer {
+            background: #FFF3CD;
+            border-left: 4px solid #FFB400;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .disclaimer strong {
+            color: #856404;
+        }
+
+        /* Contact Cards */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Legal Text */
+        .legal-text {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .legal-text h3 {
+            color: var(--secondary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .legal-text p, .legal-text ul {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .legal-text ul {
+            padding-left: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                ⚡ FlashAutomationPlus+
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="#legal">Legal</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Professional Tweet Automation</h1>
+        <p>Schedule posts, manage multiple X accounts, and automate your social media workflow</p>
+        <div class="cta-buttons">
+            <a href="#download" class="btn btn-primary">📱 Download APK</a>
+            <a href="YOUR_TELEGRAM_CHANNEL_LINK" target="_blank" class="btn btn-secondary">💬 Join Channel</a>
+            <a href="https://t.me/YOUR_BOT_USERNAME" target="_blank" class="btn btn-secondary">🤖 Open Bot</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <h2>Powerful Features</h2>
+        <p>Everything you need to manage your X (Twitter) presence efficiently</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Bulk Scheduling</h3>
+                <p>Schedule up to 250 tweets at once across multiple accounts with precise timing control</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Multi-Account Support</h3>
+                <p>Manage up to 250 X accounts from a single dashboard with secure API integration</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Link Bot Integration</h3>
+                <p>Receive instant post links via Telegram after successful publishing</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Posting</h3>
+                <p>Post all pending tweets immediately with concurrent processing for maximum speed</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Secure Storage</h3>
+                <p>Your API credentials and data stored securely in Supabase cloud infrastructure</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Referral System</h3>
+                <p>Earn wallet credits by referring new users (₹250 per successful referral)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About FlashAutomationPlus+</h2>
+        <p>A professional tool designed for content creators, marketers, and social media managers</p>
+        
+        <div class="about-content">
+            <h3>What is FlashAutomationPlus+?</h3>
+            <p>FlashAutomationPlus+ is a Telegram-based automation platform that helps you schedule and manage your X (formerly Twitter) posts efficiently. Built with Python/Flask backend and Supabase database, it offers enterprise-grade reliability for individuals and teams.</p>
+            
+            <h3>Who is it for?</h3>
+            <ul>
+                <li>Content creators managing multiple accounts</li>
+                <li>Social media managers scheduling campaigns</li>
+                <li>Marketers running time-sensitive promotions</li>
+                <li>Businesses maintaining consistent posting schedules</li>
+                <li>Individuals wanting to optimize their social media presence</li>
+            </ul>
+            
+            <h3>How It Works</h3>
+            <ul>
+                <li>Download the Android APK or use Telegram bot</li>
+                <li>Register with your email and get access key</li>
+                <li>Link your X accounts via API credentials</li>
+                <li>Add tweets and schedule posting times</li>
+                <li>Let the system handle automated posting</li>
+            </ul>
+            
+            <div class="disclaimer">
+                <strong>⚠️ Disclaimer:</strong> FlashAutomationPlus+ is an independent third-party tool and is NOT affiliated with, endorsed by, or connected to X Corp (formerly Twitter, Inc.) or any of its subsidiaries. Use of this tool is at your own risk and must comply with X's Terms of Service and API policies.
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download">
+        <h2>Download the App</h2>
+        <p>Get started with FlashAutomationPlus+ on Android</p>
+        
+        <div class="contact-card">
+            <div class="contact-icon">📲</div>
+            <h3>Android APK</h3>
+            <p>Download the latest version of our Android application</p>
+            <a href="YOUR_APK_DOWNLOAD_LINK" class="btn btn-primary" download>Download APK</a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">Version 2.0.0 | 56.7 MB | Requires Android 8.0+</p>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support">
+        <h2>Support & Contact</h2>
+        <p>Get help and connect with our community</p>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Telegram Channel</h3>
+                <p>Join our official channel for updates, announcements, and tips</p>
+                <a href="https://t.me/flashautomationplus" target="_blank" class="btn btn-primary">Join Channel</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">🤖</div>
+                <h3>Telegram Bot</h3>
+                <p>Interact with the automation system directly via Telegram</p>
+                <a href="https://t.me/TweetAutomation_bot" target="_blank" class="btn btn-primary">Open Bot</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">🐛</div>
+                <h3>Report Bugs</h3>
+                <p>Found a bug? Help us improve by reporting issues</p>
+                <a href="https://forms.gle/WDu8N4Y6pvc2gp1R6" target="_blank" class="btn btn-secondary">Bug Report Form</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">👑</div>
+                <h3>Admin Support</h3>
+                <p>Contact admin for payment approval, subscription issues, or account problems</p>
+                <a href="https://t.me/ox_anonymous" target="_blank" class="btn btn-secondary">Contact Admin</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Section -->
+    <section id="legal">
+        <h2>Legal Information</h2>
+        <p>Terms of service and privacy policy</p>
+        
+        <div class="legal-text">
+            <h3>📜 Terms & Conditions</h3>
+            <p><strong>Effective Date:</strong> January 2025</p>
+            
+            <h4>1. Acceptance of Terms</h4>
+            <p>By using FlashAutomationPlus+, you agree to these terms. If you do not agree, discontinue use immediately.</p>
+            
+            <h4>2. Service Description</h4>
+            <p>FlashAutomationPlus+ provides tweet scheduling and automation services. We do not guarantee uninterrupted service or error-free operation.</p>
+            
+            <h4>3. User Responsibilities</h4>
+            <ul>
+                <li>You must comply with X's Terms of Service and API policies</li>
+                <li>You are responsible for securing your API credentials</li>
+                <li>You must not use the service for spam, abuse, or illegal activities</li>
+                <li>You must maintain an active subscription for continued access</li>
+            </ul>
+            
+            <h4>4. API Usage</h4>
+            <p>This tool uses X's API v2. Free tier users are limited to 17 tweets per day per account. Rate limits are enforced by X, not by us.</p>
+            
+            <h4>5. Payments & Refunds</h4>
+            <ul>
+                <li>Subscription payments are non-refundable once approved</li>
+                <li>Payment must be verified by admin before activation</li>
+                <li>Pricing may change with 7 days notice</li>
+            </ul>
+            
+            <h4>6. Account Termination</h4>
+            <p>We reserve the right to block accounts for violations of these terms, fraudulent activity, or abuse of service.</p>
+            
+            <h4>7. Limitation of Liability</h4>
+            <p>FlashAutomationPlus+ is provided "as is" without warranties. We are not liable for account suspensions, data loss, or any damages arising from service use.</p>
+            
+            <h4>8. Disclaimer of Affiliation</h4>
+            <p>FlashAutomationPlus+ is an independent tool and is NOT affiliated with, endorsed by, or connected to X Corp or Twitter, Inc.</p>
+        </div>
+        
+        <div class="legal-text" style="margin-top: 3rem;">
+            <h3>🔒 Privacy Policy</h3>
+            <p><strong>Last Updated:</strong> December 2025</p>
+            
+            <h4>1. Information We Collect</h4>
+            <ul>
+                <li><strong>Account Information:</strong> Telegram ID, username, email address</li>
+                <li><strong>API Credentials:</strong> X API keys (stored encrypted in Supabase)</li>
+                <li><strong>Usage Data:</strong> Tweet schedules, post history, subscription status</li>
+                <li><strong>Payment Information:</strong> Transaction IDs, payment screenshots (stored in Supabase Storage)</li>
+            </ul>
+            
+            <h4>2. How We Use Your Information</h4>
+            <ul>
+                <li>To provide tweet scheduling and automation services</li>
+                <li>To process subscription payments</li>
+                <li>To improve and maintain the service</li>
+            </ul>
+            
+            <h4>3. Data Storage</h4>
+            <p>All data is stored securely in Supabase (PostgreSQL database) with encryption. Payment screenshots are stored in Supabase Storage with signed URLs for admin access.</p>
+            
+            <h4>4. Data Sharing</h4>
+            <p>We do NOT sell or share your data with third parties. Data is only accessed by:</p>
+            <ul>
+                <li>Authorized administrators for support purposes</li>
+                <li>Automated systems for posting tweets via X API</li>
+            </ul>
+            
+            <h4>5. Data Retention</h4>
+            <ul>
+                <li>Active accounts: Data retained indefinitely</li>
+                <li>Posted tweets: Records kept for historical purposes</li>
+                <li>Payment records: Retained for 7 years for accounting</li>
+            </ul>
+            
+            <h4>6. User Rights</h4>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Request deletion of your account and data</li>
+                <li>Export your tweet history</li>
+                <li>Update or correct your information</li>
+                <li>Revoke API access at any time</li>
+            </ul>
+            
+            <h4>7. Security</h4>
+            <p>We implement industry-standard security measures including HTTPS, encrypted storage, and access controls. However, no system is 100% secure.</p>
+            
+            <h4>8. Third-Party Services</h4>
+            <ul>
+                <li><strong>Supabase:</strong> Database and file storage (<a href="https://supabase.com/privacy" target="_blank">Privacy Policy</a>)</li>
+                <li><strong>Telegram:</strong> Bot and notification delivery (<a href="https://telegram.org/privacy" target="_blank">Privacy Policy</a>)</li>
+                <li><strong>X API:</strong> Tweet posting service (<a href="https://twitter.com/privacy" target="_blank">Privacy Policy</a>)</li>
+            </ul>
+            
+            <h4>9. Children's Privacy</h4>
+            <p>This service is not intended for users under 18 years of age. We do not knowingly collect data from minors.</p>
+            
+            <h4>10. Changes to Privacy Policy</h4>
+            <p>We may update this policy and will notify users via Telegram channel with 7 days notice.</p>
+            
+            <h4>11. Contact</h4>
+            <p>For privacy concerns, contact: <a href="https://t.me/ox_anonymous" target="_blank">@ox_anonymous</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 FlashAutomationPlus+. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Not affiliated with X Corp or Twitter, Inc.</p>
+    </footer>
+
+</body>
+</html>
