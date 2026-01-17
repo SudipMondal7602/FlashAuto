@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlashAutomationPlus+ | Professional Tweet Automation Tool</title>
-    <meta name="description" content="Automate your X (Twitter) posting with FlashAutomationPlus+. Schedule tweets, manage multiple accounts, and streamline your social media workflow.">
-    <meta name="keywords" content="twitter automation, tweet scheduler, x automation, social media management, bulk tweet scheduling">
+    <title>FlashAutomationPlus+ v3.0 | AI-Powered Tweet Automation</title>
+    <meta name="description" content="Automate your X (Twitter) posting with AI-powered FlashAutomationPlus+ v3.0. AI tweet generator, bulk scheduling, referral earnings & more.">
+    <meta name="keywords" content="twitter automation, AI tweet generator, tweet scheduler, x automation, social media management, bulk tweet scheduling">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -31,6 +31,7 @@
             --accent-foreground: hsl(0, 0%, 100%);
             --border: hsl(214, 20%, 90%);
             --radius: 0.75rem;
+            --success: hsl(142, 76%, 36%);
         }
 
         html {
@@ -306,6 +307,17 @@
             font-weight: 500;
         }
 
+        .new-badge {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .hero h1 {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 800;
@@ -409,6 +421,26 @@
             margin: 0 auto;
         }
 
+        /* What's New Banner */
+        .whats-new-banner {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .whats-new-banner h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .whats-new-banner p {
+            opacity: 0.95;
+        }
+
         /* Features */
         .features {
             background: var(--background);
@@ -426,6 +458,25 @@
             border-radius: 1rem;
             border: 1px solid var(--border);
             transition: all 0.3s;
+            position: relative;
+        }
+
+        .feature-card.new-feature {
+            border: 2px solid #ff6b35;
+        }
+
+        .feature-card.new-feature::before {
+            content: '🆕 NEW';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .feature-card:hover {
@@ -464,6 +515,26 @@
             color: var(--muted-foreground);
             line-height: 1.6;
             margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            color: var(--muted-foreground);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
         }
 
         /* About */
@@ -587,9 +658,15 @@
             background: var(--background);
         }
 
-        .download-card {
-            max-width: 500px;
+        .download-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
             margin: 0 auto;
+        }
+
+        .download-card {
             background: var(--card);
             padding: 3rem;
             border-radius: 1.5rem;
@@ -600,7 +677,25 @@
             overflow: hidden;
         }
 
-        .download-card::before {
+        .download-card.featured {
+            border: 2px solid #ff6b35;
+        }
+
+        .download-card.featured::before {
+            content: '🆕 LATEST';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .download-card::after {
             content: '';
             position: absolute;
             top: 0;
@@ -630,6 +725,16 @@
             font-weight: 600;
             color: var(--foreground);
             margin-bottom: 0.5rem;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: var(--secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
         }
 
         .download-card > p {
@@ -878,6 +983,10 @@
             .support-grid {
                 grid-template-columns: 1fr;
             }
+
+            .download-cards {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -910,36 +1019,36 @@
 
         <div class="hero-content">
             <div class="hero-badge">
-                <span>✨</span>
-                <span>Professional Tweet Automation Tool</span>
+                <span class="new-badge">v3.0</span>
+                <span>AI-Powered Tweet Automation • Now with FlashAI</span>
             </div>
 
-            <h1>Automate Your <br><span class="highlight">X Presence</span></h1>
+            <h1>Automate Your <br><span class="highlight">X Presence with AI</span></h1>
 
-            <p>Schedule posts, manage multiple X accounts, and streamline your social media workflow with ease</p>
+            <p>Generate tweets with AI, schedule 250 posts at once, earn through referrals, and streamline your social media workflow</p>
 
             <div class="hero-buttons">
-                <a href="#download" class="btn btn-accent btn-lg">📱 Download APK</a>
+                <a href="#download" class="btn btn-accent btn-lg">📥 Download v3.0</a>
                 <a href="https://t.me/flashautomationplus" target="_blank" class="btn btn-hero btn-lg">💬 Join Channel</a>
                 <a href="https://t.me/TweetAutomation_bot" target="_blank" class="btn btn-outline btn-lg">🤖 Open Main Bot</a>
             </div>
 
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-value">250+</div>
-                    <div class="hero-stat-label">Accounts Supported</div>
+                    <div class="hero-stat-value">AI</div>
+                    <div class="hero-stat-label">Tweet Generator</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-value">250</div>
-                    <div class="hero-stat-label">Tweets at Once</div>
+                    <div class="hero-stat-label">Accounts Supported</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-value">24/7</div>
-                    <div class="hero-stat-label">Automation</div>
+                    <div class="hero-stat-value">₹250</div>
+                    <div class="hero-stat-label">Per Referral</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-value">100%</div>
-                    <div class="hero-stat-label">Secure Storage</div>
+                    <div class="hero-stat-value">⚡</div>
+                    <div class="hero-stat-label">Instant Posting</div>
                 </div>
             </div>
         </div>
@@ -954,47 +1063,149 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
+            <div class="whats-new-banner">
+                <h3>🎉 What's New in v3.0</h3>
+                <p>FlashAI Tweet Generator, CustomPost Slots, Instant Bulk Posting, Referral Earnings & More!</p>
+            </div>
+
             <div class="section-header">
                 <h2>Powerful Features</h2>
-                <p>Everything you need to manage your X (Twitter) presence efficiently</p>
+                <p>Everything you need to dominate X (Twitter) with AI-powered automation</p>
             </div>
 
             <div class="features-grid">
+                <div class="feature-card new-feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>FlashAI Tweet Generator</h3>
+                    <p>Generate 5-50 professional tweets instantly with Google Gemini AI</p>
+                    <ul class="feature-list">
+                        <li>One sample tweet → 50 unique tweets</li>
+                        <li>Custom hashtag integration</li>
+                        <li>Adjustable tweet length (1-10 lines)</li>
+                        <li>100% FREE unlimited usage</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card new-feature">
+                    <div class="feature-icon">📁</div>
+                    <h3>CustomPost Slot System</h3>
+                    <p>Organize tweets into smart categories for better campaign management</p>
+                    <ul class="feature-list">
+                        <li>Create unlimited named slots</li>
+                        <li>Separate AI & manual content</li>
+                        <li>One-click slot posting</li>
+                        <li>Perfect for campaigns</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card new-feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Bulk Posting</h3>
+                    <p>Post 250 tweets in under 60 seconds with concurrent processing</p>
+                    <ul class="feature-list">
+                        <li>10x faster than before</li>
+                        <li>50 parallel threads</li>
+                        <li>Auto account rotation</li>
+                        <li>Real-time progress tracking</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card new-feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Referral & Wallet System</h3>
+                    <p>Earn money by sharing the app with your network</p>
+                    <ul class="feature-list">
+                        <li>₹250 per successful referral</li>
+                        <li>Direct wallet credits</li>
+                        <li>Use for subscriptions</li>
+                        <li>Track earnings in real-time</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card new-feature">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Push Notifications</h3>
+                    <p>Never miss important updates with real-time app alerts</p>
+                    <ul class="feature-list">
+                        <li>Tweet post confirmations</li>
+                        <li>Payment approvals</li>
+                        <li>Referral success alerts</li>
+                        <li>Subscription reminders</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card new-feature">
+                    <div class="feature-icon">🎟️</div>
+                    <h3>Coupon System</h3>
+                    <p>Save money with discount codes and special offers</p>
+                    <ul class="feature-list">
+                        <li>Percentage-based discounts</li>
+                        <li>Limited & unlimited coupons</li>
+                        <li>Auto-expiration tracking</li>
+                        <li>Real-time validation</li>
+                    </ul>
+                </div>
+
                 <div class="feature-card">
                     <div class="feature-icon">📅</div>
-                    <h3>Bulk Scheduling</h3>
-                    <p>Schedule up to 250 tweets at once across multiple accounts with precise timing control</p>
+                    <h3>Smart Scheduling</h3>
+                    <p>Schedule up to 250 tweets at once with precise timing control</p>
+                    <ul class="feature-list">
+                        <li>Auto-posting every 5 seconds</li>
+                        <li>IST timezone support</li>
+                        <li>Batch processing</li>
+                    </ul>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">👥</div>
                     <h3>Multi-Account Support</h3>
-                    <p>Manage up to 250 X accounts from a single dashboard with secure API integration</p>
+                    <p>Manage up to 250 X accounts from a single dashboard</p>
+                    <ul class="feature-list">
+                        <li>Secure API integration</li>
+                        <li>Add/Edit/Delete accounts</li>
+                        <li>Bearer token support</li>
+                    </ul>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">🔗</div>
                     <h3>Link Bot Integration</h3>
-                    <p>Receive instant post links via Telegram after successful publishing</p>
+                    <p>Receive instant post links via Telegram after publishing</p>
                     <a href="https://t.me/TweetXLinks_bot" target="_blank" class="btn btn-outline-dark" style="margin-top: 0.5rem; padding: 0.5rem 1rem; font-size: 0.875rem;">Open Link Bot →</a>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Instant Posting</h3>
-                    <p>Post all pending tweets immediately with concurrent processing for maximum speed</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">🔐</div>
                     <h3>Secure Storage</h3>
-                    <p>Your API credentials and data stored securely in encrypted cloud infrastructure</p>
+                    <p>Your API credentials stored securely in encrypted cloud infrastructure</p>
+                    <ul class="feature-list">
+                        <li>Supabase cloud database</li>
+                        <li>End-to-end encryption</li>
+                        <li>99.9% uptime guarantee</li>
+                    </ul>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Referral System</h3>
-                    <p>Earn wallet credits by referring new users (₹250 per successful referral)</p>
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Track all your posting activity and performance metrics</p>
+                    <ul class="feature-list">
+                        <li>Tweet history</li>
+                        <li>Success/Fail rates</li>
+                        <li>Account status tracking</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>Flexible Payments</h3>
+                    <p>Multiple payment options for your convenience</p>
+                    <ul class="feature-list">
+                        <li>UPI (India - ₹499-3900)</li>
+                        <li>USDT Crypto (Global - $6-48)</li>
+                        <li>Wallet balance redemption</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1004,14 +1215,14 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2>About FlashAutomationPlus+</h2>
-                <p>A professional tool designed for content creators, marketers, and social media managers</p>
+                <h2>About FlashAutomationPlus+ v3.0</h2>
+                <p>AI-powered platform for content creators, marketers, and social media managers</p>
             </div>
 
             <div class="about-content">
                 <div class="about-intro">
-                    <h3>What is FlashAutomationPlus+?</h3>
-                    <p>FlashAutomationPlus+ is a Telegram-based automation platform that helps you schedule and manage your X (formerly Twitter) posts efficiently. Built with Python/Flask backend and secure cloud database, it offers enterprise-grade reliability for individuals and teams.</p>
+                    <h3>What is FlashAutomationPlus+ v3.0?</h3>
+                    <p>FlashAutomationPlus+ v3.0 is the most advanced Twitter automation platform with integrated AI tweet generation (FlashAI), smart slot management (CustomPost), instant bulk posting, and a referral earning system. Built with Python/Flask backend, Google Gemini AI, and secure Supabase cloud database, it offers enterprise-grade reliability for individuals and teams.</p>
                 </div>
 
                 <div class="about-grid">
@@ -1022,18 +1233,19 @@
                             <li><span class="check">✓</span> Social media managers scheduling campaigns</li>
                             <li><span class="check">✓</span> Marketers running time-sensitive promotions</li>
                             <li><span class="check">✓</span> Businesses maintaining consistent posting schedules</li>
-                            <li><span class="check">✓</span> Individuals wanting to optimize their social media presence</li>
+                            <li><span class="check">✓</span> Influencers wanting AI-powered content generation</li>
                         </ul>
                     </div>
 
                     <div class="about-card">
                         <h3>How It Works</h3>
                         <ul class="about-list">
-                            <li><span class="number">1</span> Download the Android APK or use Telegram bot</li>
-                            <li><span class="number">2</span> Register with your email and get access key</li>
-                            <li><span class="number">3</span> Link your X accounts via API credentials</li>
-                            <li><span class="number">4</span> Add tweets and schedule posting times</li>
-                            <li><span class="number">5</span> Let the system handle automated posting</li>
+                            <li><span class="number">1</span> Download Android app or use Telegram bot</li>
+                            <li><span class="number">2</span> Register with email and get permanent access key</li>
+                            <li><span class="number">3</span> Link up to 250 X accounts via API</li>
+                            <li><span class="number">4</span> Use FlashAI to generate or add tweets manually</li>
+                            <li><span class="number">5</span> Organize in CustomPost slots or post instantly</li>
+                            <li><span class="number">6</span> Earn through referrals & track in wallet</li>
                         </ul>
                     </div>
                 </div>
@@ -1054,23 +1266,65 @@
         <div class="container">
             <div class="section-header">
                 <h2>Download the App</h2>
-                <p>Get started with FlashAutomationPlus+ on Android</p>
+                <p>Get the latest v3.0 with FlashAI, CustomPost & more new features</p>
             </div>
 
-            <div class="download-card">
-                <div class="download-icon">
-    <img src="https://res.cloudinary.com/dpn6zos4c/image/upload/v1766658334/app_icon_k0ujgo.png" alt="App Logo" style="width: 70%; height: 70%; object-fit: contain;">
-</div>
-                <h3>Android APK</h3>
-                <p>Download the latest version of our Android application</p>
+            <div class="download-cards">
+                <div class="download-card featured">
+                    <div class="download-icon">
+                        <img src="https://res.cloudinary.com/dpn6zos4c/image/upload/v1766658334/app_icon_k0ujgo.png" alt="App Logo" style="width: 70%; height: 70%; object-fit: contain;">
+                    </div>
+                    <h3>Android v3.0.0</h3>
+                    <span class="version-badge">🆕 Latest Release - January 2025</span>
+                    <p>Download the newest version with AI tweet generation and slot management</p>
 
-                <div class="download-tags">
-                    <span class="download-tag"><span class="icon">✓</span> Version 2.0.0</span>
-                    <span class="download-tag"><span class="icon">✓</span> 56.7 MB</span>
-                    <span class="download-tag"><span class="icon">✓</span> Android 8.0+</span>
+                    <div class="download-tags">
+                        <span class="download-tag"><span class="icon">✓</span> Version 3.0.0</span>
+                        <span class="download-tag"><span class="icon">✓</span> 57.2 MB</span>
+                        <span class="download-tag"><span class="icon">✓</span> Android 8.0+</span>
+                    </div>
+
+                    <a href="https://github.com/SudipMondal7602/FlashAuto/releases/download/v3.0.0/FlashAuto.apk" download class="btn btn-accent btn-full btn-lg">📥 Download v3.0.0 APK</a>
+
+                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <p style="font-size: 0.875rem; color: var(--muted-foreground); margin-bottom: 0.75rem;"><strong>New in v3.0:</strong></p>
+                        <ul class="feature-list" style="text-align: left;">
+                            <li>🤖 FlashAI Tweet Generator</li>
+                            <li>📁 CustomPost Slot System</li>
+                            <li>⚡ Instant Bulk Posting (50 threads)</li>
+                            <li>💰 Referral & Wallet System</li>
+                            <li>🔔 Push Notifications</li>
+                            <li>🎟️ Coupon/Discount Support</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <a href="https://github.com/SudipMondal7602/FlashAuto/releases/download/v2.0.0/FlashAuto.apk" download class="btn btn-accent btn-full btn-lg">📥 Download APK</a>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <img src="https://res.cloudinary.com/dpn6zos4c/image/upload/v1766658334/app_icon_k0ujgo.png" alt="App Logo" style="width: 70%; height: 70%; object-fit: contain;">
+                    </div>
+                    <h3>Android v2.0.0</h3>
+                    <span class="version-badge">Previous Stable</span>
+                    <p>Previous version without AI features (still supported)</p>
+
+                    <div class="download-tags">
+                        <span class="download-tag"><span class="icon">✓</span> Version 2.0.0</span>
+                        <span class="download-tag"><span class="icon">✓</span> 56.7 MB</span>
+                        <span class="download-tag"><span class="icon">✓</span> Android 8.0+</span>
+                    </div>
+
+                    <a href="https://github.com/SudipMondal7602/FlashAuto/releases/download/v2.0.0/FlashAuto.apk" download class="btn btn-outline-dark btn-full btn-lg">📥 Download v2.0.0 APK</a>
+
+                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <p style="font-size: 0.875rem; color: var(--muted-foreground);"><strong>Features:</strong></p>
+                        <ul class="feature-list" style="text-align: left;">
+                            <li>📅 Bulk Scheduling (250 tweets)</li>
+                            <li>👥 Multi-Account (250 accounts)</li>
+                            <li>🔗 Link Bot Integration</li>
+                            <li>🔐 Secure Cloud Storage</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1140,7 +1394,7 @@
 
                     <div class="legal-section">
                         <h4>2. Service Description</h4>
-                        <p>FlashAutomationPlus+ provides tweet scheduling and automation services. We do not guarantee uninterrupted service or error-free operation.</p>
+                        <p>FlashAutomationPlus+ provides tweet scheduling, AI generation, and automation services. We do not guarantee uninterrupted service or error-free operation.</p>
                     </div>
 
                     <div class="legal-section">
@@ -1150,36 +1404,49 @@
                             <li>You are responsible for securing your API credentials</li>
                             <li>You must not use the service for spam, abuse, or illegal activities</li>
                             <li>You must maintain an active subscription for continued access</li>
+                            <li>AI-generated content must be reviewed before posting</li>
                         </ul>
                     </div>
 
                     <div class="legal-section">
-                        <h4>4. API Usage</h4>
-                        <p>This tool uses X's API v2. Free tier users are limited to 17 tweets per day per account. Rate limits are enforced by X, not by us.</p>
+                        <h4>4. API Usage & Rate Limits</h4>
+                        <p>This tool uses X's API v2. Free tier users are limited to 17 tweets per day per account. Rate limits are enforced by X, not by us. Premium API access may be required for heavy usage.</p>
                     </div>
 
                     <div class="legal-section">
-                        <h4>5. Payments & Refunds</h4>
+                        <h4>5. Payments, Subscriptions & Refunds</h4>
                         <ul>
                             <li>Subscription payments are non-refundable once approved</li>
                             <li>Payment must be verified by admin before activation</li>
                             <li>Pricing may change with 7 days notice</li>
+                            <li>Referral earnings are final and non-reversible</li>
+                            <li>Wallet balance can only be used for subscriptions</li>
                         </ul>
                     </div>
 
                     <div class="legal-section">
-                        <h4>6. Account Termination</h4>
-                        <p>We reserve the right to block accounts for violations of these terms, fraudulent activity, or abuse of service.</p>
+                        <h4>6. Referral Program</h4>
+                        <p>Referral rewards (₹250 per successful referral) are credited after the referred user completes their first subscription payment. Fraudulent referrals will result in account termination and wallet balance forfeiture.</p>
                     </div>
 
                     <div class="legal-section">
-                        <h4>7. Limitation of Liability</h4>
-                        <p>FlashAutomationPlus+ is provided "as is" without warranties. We are not liable for account suspensions, data loss, or any damages arising from service use.</p>
+                        <h4>7. AI-Generated Content</h4>
+                        <p>FlashAI uses Google Gemini for tweet generation. Users are solely responsible for reviewing and approving all AI-generated content before posting. We are not liable for any content generated by the AI system.</p>
                     </div>
 
                     <div class="legal-section">
-                        <h4>8. Disclaimer of Affiliation</h4>
-                        <p>FlashAutomationPlus+ is an independent tool and is NOT affiliated with, endorsed by, or connected to X Corp or Twitter, Inc.</p>
+                        <h4>8. Account Termination</h4>
+                        <p>We reserve the right to block accounts for violations of these terms, fraudulent activity, abuse of service, or referral program manipulation.</p>
+                    </div>
+
+                    <div class="legal-section">
+                        <h4>9. Limitation of Liability</h4>
+                        <p>FlashAutomationPlus+ is provided "as is" without warranties. We are not liable for account suspensions, data loss, AI-generated content issues, or any damages arising from service use.</p>
+                    </div>
+
+                    <div class="legal-section">
+                        <h4>10. Disclaimer of Affiliation</h4>
+                        <p>FlashAutomationPlus+ is an independent tool and is NOT affiliated with, endorsed by, or connected to X Corp, Twitter Inc, or Google.</p>
                     </div>
                 </div>
 
@@ -1188,7 +1455,7 @@
                         <div class="legal-icon">🔒</div>
                         <div>
                             <h3>Privacy Policy</h3>
-                            <p>Last Updated: December 2025</p>
+                            <p>Last Updated: January 2025</p>
                         </div>
                     </div>
 
@@ -1197,42 +1464,47 @@
                         <ul>
                             <li><strong>Account Information:</strong> Telegram ID, username, email address</li>
                             <li><strong>API Credentials:</strong> X API keys (stored encrypted)</li>
-                            <li><strong>Usage Data:</strong> Tweet schedules, post history, subscription status</li>
-                            <li><strong>Payment Information:</strong> Transaction IDs, payment screenshots</li>
+                            <li><strong>Usage Data:</strong> Tweet schedules, post history, subscription status, AI generation history</li>
+                            <li><strong>Payment Information:</strong> Transaction IDs, payment screenshots, wallet balance</li>
+                            <li><strong>Referral Data:</strong> Referral codes, referrer relationships, earnings</li>
+                            <li><strong>Device Data:</strong> FCM tokens for push notifications</li>
                         </ul>
                     </div>
 
                     <div class="legal-section">
                         <h4>2. How We Use Your Information</h4>
                         <ul>
-                            <li>To provide tweet scheduling and automation services</li>
-                            <li>To process subscription payments</li>
+                            <li>To provide tweet scheduling, AI generation, and automation services</li>
+                            <li>To process subscription payments and referral rewards</li>
+                            <li>To send push notifications about tweet posts and account activity</li>
                             <li>To improve and maintain the service</li>
+                            <li>To prevent fraud and abuse</li>
                         </ul>
                     </div>
 
                     <div class="legal-section">
-                        <h4>3. Data Storage</h4>
-                        <p>All data is stored securely in encrypted cloud infrastructure with industry-standard security measures.</p>
+                        <h4>3. Data Storage & Security</h4>
+                        <p>All data is stored securely in Supabase cloud infrastructure with industry-standard encryption. Payment screenshots are stored in secure cloud storage with signed URL access.</p>
                     </div>
 
                     <div class="legal-section">
                         <h4>4. Data Sharing</h4>
-                        <p>We do NOT sell or share your data with third parties. Data is only accessed by authorized administrators for support purposes and automated systems for posting tweets via X API.</p>
+                        <p>We do NOT sell or share your data with third parties. Data is only accessed by authorized administrators for support purposes, automated systems for posting tweets via X API, and Google Gemini for AI tweet generation.</p>
                     </div>
 
                     <div class="legal-section">
                         <h4>5. Data Retention</h4>
                         <ul>
                             <li>Active accounts: Data retained indefinitely</li>
-                            <li>Posted tweets: Records kept for historical purposes</li>
+                            <li>Posted tweets & AI history: Records kept for historical purposes</li>
                             <li>Payment records: Retained for 7 years for accounting</li>
+                            <li>Referral data: Retained permanently for earnings tracking</li>
                         </ul>
                     </div>
 
                     <div class="legal-section">
                         <h4>6. User Rights</h4>
-                        <p>You have the right to request deletion of your account and data, export your tweet history, update or correct your information, and revoke API access at any time.</p>
+                        <p>You have the right to request deletion of your account and data, export your tweet and referral history, update or correct your information, and revoke API access at any time. Wallet balance may be lost upon account deletion.</p>
                     </div>
 
                     <div class="legal-section">
@@ -1241,6 +1513,8 @@
                             <li><strong>Supabase:</strong> Database and file storage - <a href="https://supabase.com/privacy" target="_blank">Privacy Policy</a></li>
                             <li><strong>Telegram:</strong> Bot and notification delivery - <a href="https://telegram.org/privacy" target="_blank">Privacy Policy</a></li>
                             <li><strong>X API:</strong> Tweet posting service - <a href="https://twitter.com/privacy" target="_blank">Privacy Policy</a></li>
+                            <li><strong>Google Gemini:</strong> AI tweet generation - <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></li>
+                            <li><strong>Firebase (FCM):</strong> Push notifications - <a href="https://firebase.google.com/support/privacy" target="_blank">Privacy Policy</a></li>
                         </ul>
                     </div>
 
@@ -1264,8 +1538,8 @@
             <div class="footer-logo-icon">⚡</div>
             <div class="footer-logo-text">FlashAutomation<span>Plus+</span></div>
         </div>
-        <p>© 2025 FlashAutomationPlus+. All rights reserved.</p>
-        <p>Not affiliated with X Corp or Twitter, Inc.</p>
+        <p>© 2025 FlashAutomationPlus+ v3.0. All rights reserved.</p>
+        <p>Not affiliated with X Corp, Twitter Inc, or Google.</p>
     </footer>
 
 </body>
